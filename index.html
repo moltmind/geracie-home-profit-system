@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milwaukee Home Profit System | The Jim Geracie Team</title>
+<meta name="description" content="The Milwaukee Home Profit System — a smarter way to sell your home. Free tools, expert guidance, and a proven process from The Jim Geracie Team.">
+<meta property="og:title" content="Milwaukee Home Profit System | The Jim Geracie Team">
+<meta property="og:description" content="A smarter way to sell your Milwaukee home. Free tools, expert guidance, and a proven process.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #e2cc9c;
+    --gold-dark: #a88b4a;
+    --gold-glow: rgba(201, 169, 110, 0.15);
+    --black: #0a0a0a;
+    --black-soft: #111111;
+    --black-card: #151515;
+    --white: #ffffff;
+    --white-off: #f5f3ef;
+    --gray-100: #f0ede8;
+    --gray-200: #d9d5cd;
+    --gray-400: #9e9a92;
+    --gray-600: #6b6860;
+    --gray-800: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201, 169, 110, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-gold-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+    animation: expandLine 1s ease 0.3s both;
+  }
+
+  @keyframes expandLine {
+    from { width: 0; opacity: 0; }
+    to { width: 60px; opacity: 1; }
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 800;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 10px;
+    animation: fadeUp 0.8s ease 0.35s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 400;
+    color: var(--gray-200);
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray-400);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.25s;
+    animation: fadeUp 0.8s ease 0.7s both;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 0.8s ease 1s both;
+  }
+
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+  }
+
+  .scroll-arrow {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === SECTION BASICS === */
+  section {
+    padding: 80px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray-400);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* === TOOLS GRID === */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .tool-card {
+    background: var(--black-card);
+    border: 1px solid var(--gray-800);
+    border-radius: 10px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--white);
+    display: block;
+  }
+
+  .tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .tool-card:hover {
+    border-color: rgba(201, 169, 110, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+  }
+
+  .tool-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .tool-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(201, 169, 110, 0.1);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .tool-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .tool-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gray-400);
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+
+  .tool-link {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .tool-card:hover .tool-link {
+    gap: 10px;
+  }
+
+  .tool-link-arrow {
+    transition: transform 0.2s;
+  }
+
+  .tool-card:hover .tool-link-arrow {
+    transform: translateX(2px);
+  }
+
+  /* === PROCESS === */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    counter-reset: step;
+  }
+
+  @media (max-width: 680px) {
+    .process-steps { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .step {
+    position: relative;
+    padding: 32px 24px;
+    background: var(--black-card);
+    border: 1px solid var(--gray-800);
+    border-radius: 10px;
+    counter-increment: step;
+  }
+
+  .step::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(201, 169, 110, 0.12);
+    line-height: 1;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .step p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gray-400);
+    line-height: 1.65;
+  }
+
+  /* === ABOUT === */
+  .about-section {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (max-width: 680px) {
+    .about-section { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .about-photo {
+    aspect-ratio: 4/5;
+    background: var(--black-card);
+    border: 1px solid var(--gray-800);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo-inner {
+    text-align: center;
+    padding: 32px;
+  }
+
+  .about-photo-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .about-photo-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .about-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .about-text p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray-400);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .about-text p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* === STATS === */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 480px) {
+    .stats-bar { grid-template-columns: 1fr; }
+  }
+
+  .stat {
+    text-align: center;
+    padding: 24px 16px;
+    background: rgba(201, 169, 110, 0.04);
+    border: 1px solid rgba(201, 169, 110, 0.1);
+    border-radius: 8px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  /* === CTA SECTION === */
+  .cta-section {
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray-400);
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 16px 40px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  .footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* === DIVIDER === */
+  .section-divider {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section-divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gray-800), transparent);
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+  <div class="hero-gold-line"></div>
+  <div class="hero-tag">The Jim Geracie Team &middot; Milwaukee, WI</div>
+  <h1>The Milwaukee<br>Home <em>Profit</em> System</h1>
+  <div class="hero-sub">Sell smarter. Net more. Move forward.</div>
+  <p class="hero-desc">A technology-driven approach to selling your home that puts real numbers in your hands before you ever sign a listing agreement.</p>
+  <a href="#tools" class="hero-cta">Explore the Tools</a>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- ====== TOOLS ====== -->
+<section id="tools">
+  <div class="section-tag">Your Toolkit</div>
+  <h2 class="section-title">Free Tools Built for<br>Milwaukee Sellers</h2>
+  <p class="section-desc">Every tool you need to understand your home's value, weigh your options, and maximize your profit at closing.</p>
+
+  <div class="tools-grid">
+
+    <a href="https://moltmind.github.io/geracie-fix-vs-sell/" target="_blank" class="tool-card">
+      <div class="tool-icon">&#x2696;</div>
+      <h3>Fix vs. Sell Analyzer</h3>
+      <p>Should you invest in repairs or sell as-is? Enter your situation and get a data-backed recommendation with projected ROI on every potential improvement.</p>
+      <span class="tool-link">Try It Free <span class="tool-link-arrow">&rarr;</span></span>
+    </a>
+
+    <a href="https://moltmind.github.io/geracie-net-proceeds/" target="_blank" class="tool-card">
+      <div class="tool-icon">&#x1F4B0;</div>
+      <h3>Seller Net Proceeds Calculator</h3>
+      <p>See exactly what you'll pocket at closing. Accounts for commissions, Wisconsin closing costs, mortgage payoff, concessions, and more.</p>
+      <span class="tool-link">Calculate Now <span class="tool-link-arrow">&rarr;</span></span>
+    </a>
+
+    <a href="https://moltmind.github.io/geracie-chatbot-demo/" target="_blank" class="tool-card">
+      <div class="tool-icon">&#x1F4AC;</div>
+      <h3>AI Home Selling Assistant</h3>
+      <p>Have questions about selling your Milwaukee home? Our AI assistant has answers 24/7 — from pricing strategy to closing timeline and everything in between.</p>
+      <span class="tool-link">Ask a Question <span class="tool-link-arrow">&rarr;</span></span>
+    </a>
+
+    <a href="https://moltmind.github.io/geracie-listing-generator/" target="_blank" class="tool-card">
+      <div class="tool-icon">&#x1F3E0;</div>
+      <h3>AI Listing Description Generator</h3>
+      <p>Generate a professional, compelling MLS listing description for your property in seconds. Highlight the features that buyers in your Milwaukee neighborhood care about.</p>
+      <span class="tool-link">Generate a Listing <span class="tool-link-arrow">&rarr;</span></span>
+    </a>
+
+    <a href="https://moltmind.github.io/geracie-command-center/" target="_blank" class="tool-card">
+      <div class="tool-icon">&#x1F4CA;</div>
+      <h3>Seller Command Center</h3>
+      <p>Your personalized dashboard to track your home sale from listing to closing. Monitor showings, feedback, offers, and key milestones all in one place.</p>
+      <span class="tool-link">View Dashboard <span class="tool-link-arrow">&rarr;</span></span>
+    </a>
+
+    <div class="tool-card" style="border-style: dashed; cursor: default;">
+      <div class="tool-icon" style="opacity:0.5;">&#x1F527;</div>
+      <h3 style="color: var(--gray-400);">More Coming Soon</h3>
+      <p>We're always building new tools to give our sellers an edge. Stay tuned for neighborhood market reports, AI-powered pricing insights, and more.</p>
+      <span class="tool-link" style="opacity:0.4;">In Development</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"><div class="section-divider-line"></div></div>
+
+<!-- ====== PROCESS ====== -->
+<section>
+  <div class="section-tag">The Process</div>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-desc">Three steps to a smarter home sale.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <h3>Know Your Numbers</h3>
+      <p>Use our free tools to understand your home's current position — what it's worth, what repairs make sense, and what you'll actually walk away with.</p>
+    </div>
+    <div class="step">
+      <h3>Build Your Strategy</h3>
+      <p>We sit down together and craft a custom plan: pricing, prep, timing, and marketing — all backed by data, not guesswork.</p>
+    </div>
+    <div class="step">
+      <h3>Maximize Your Profit</h3>
+      <p>From listing day to closing day, our system tracks every detail so nothing falls through the cracks and you net the most possible.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="section-divider-line"></div></div>
+
+<!-- ====== ABOUT ====== -->
+<section>
+  <div class="about-section">
+    <div class="about-photo">
+      <div class="about-photo-inner">
+        <div class="about-photo-initials">JG</div>
+        <div class="about-photo-name">Jim Geracie</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">About Jim</div>
+      <h3>Your Milwaukee<br>Home Selling Expert</h3>
+      <p>Jim Geracie and his wife Jill lead a faith-driven real estate team rooted in <strong>honesty, hard work, and putting people first</strong>. They built the Milwaukee Home Profit System because they believe every seller deserves to understand their numbers <em>before</em> making one of the biggest financial decisions of their life.</p>
+      <p>With deep roots in the Milwaukee community and a passion for leveraging technology to serve clients better, The Jim Geracie Team brings a level of transparency and precision that's rare in real estate.</p>
+
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Free Seller Tools</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">AI Assistant</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">MKE</div>
+          <div class="stat-label">Locally Focused</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="section-divider-line"></div></div>
+
+<!-- ====== CTA ====== -->
+<section class="cta-section">
+  <h2>Ready to See What<br>Your Home Is Worth?</h2>
+  <p>Start with our free tools or reach out directly. No pressure, no obligation — just real numbers and straight answers.</p>
+  <div class="cta-buttons">
+    <a href="#tools" class="btn-primary">Use the Free Tools</a>
+    <a href="https://www.facebook.com/TheJimGeracieTeam" target="_blank" class="btn-secondary">Contact Jim</a>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<div class="footer">
+  <div class="footer-brand">Milwaukee Home Profit System</div>
+  <p>The Jim Geracie Team &middot; Milwaukee, WI<br>
+  <a href="https://www.facebook.com/TheJimGeracieTeam" target="_blank">Facebook</a></p>
+</div>
+
+<script>
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.tool-card, .step, .about-section, .stat').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
